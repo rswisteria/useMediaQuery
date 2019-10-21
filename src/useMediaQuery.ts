@@ -1,45 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const useMediaQuery = (mediaQueryList: string[]) => {
+const useMediaQuery: (mediaQueryList: string[]) => string = (mediaQueryList) => {
     const [current, setCurrent] = useState();
 
     useEffect(() => {
         let mounted: boolean = true;
         let timeout = null;
 
-        const getCurrentMedia = (mediaList: string[]) => {
+        const getCurrentMedia: (mediaList: string[]) => string = (mediaList) => {
             let result = null;
             for (const media of mediaList) {
                 if (window.matchMedia(media).matches) {
                     result = media;
-                    break
+                    break;
                 }
             }
-            return result
+            return result;
         };
 
-        const onResize = () => {
+        const onResize: () => void = () => {
             // 500msに一度しかresizeイベントのcallbackを実行しないようにする
-            if (timeout) return;
+            if (timeout) {
+                return;
+            }
 
             const media: string = getCurrentMedia(mediaQueryList);
             if (current !== media) {
-                setCurrent(media)
+                setCurrent(media);
             }
 
-            timeout = setTimeout(() => timeout = null, 500)
+            timeout = setTimeout(() => timeout = null, 500);
         };
 
         setCurrent(getCurrentMedia(mediaQueryList));
-        window.addEventListener('resize', onResize);
+        window.addEventListener("resize", onResize);
 
         return () => {
             mounted = false;
-            window.removeEventListener('resize', onResize)
-        }
+            window.removeEventListener("resize", onResize);
+        };
     }, [mediaQueryList]);
 
-    return current
+    return current;
 };
-
 export default useMediaQuery;
