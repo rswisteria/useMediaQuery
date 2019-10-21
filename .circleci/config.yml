@@ -13,7 +13,7 @@ refs:
     - &Prepare
       run:
         name: Prepare for build
-        command: apk add ca-certificates
+        command: apk add ca-certificates git
     - &Install
       run:
         name: Install Dependencies
@@ -110,4 +110,4 @@ workflows:
             - lint
           filters:
             branches:
-              only: master
+              only: feature/add_semantic_release
