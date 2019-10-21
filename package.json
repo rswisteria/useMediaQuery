@@ -16,7 +16,11 @@
     "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
     "lint:fix": "yarn lint --fix"
   },
-  "author": "@rs_wisteria",
+  "author": {
+    "name": "TOYOTA, Yoichi",
+    "url": "https://twitter.com/rs_wisteria"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/rswisteria/useMediaQuery"
