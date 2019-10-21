@@ -13,7 +13,7 @@ refs:
     - &Prepare
       run:
         name: Prepare for build
-        command: apk add ca-certificates
+        command: apk add ca-certificates git
     - &Install
       run:
         name: Install Dependencies
