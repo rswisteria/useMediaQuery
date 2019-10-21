@@ -110,4 +110,4 @@ workflows:
             - lint
           filters:
             branches:
-              only: feature/add_semantic_release
+              only: master
