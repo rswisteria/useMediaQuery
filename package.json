@@ -1,0 +1,21 @@
+{
+  "name": "react-use-media-query",
+  "version": "0.1.0",
+  "description": "React custom hooks for using media query",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@testing-library/react-hooks": "^3.1.0",
+    "jest": "^24.9.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-test-renderer": "^16.10.2",
+    "typescript": "^3.6.4"
+  }
+}
