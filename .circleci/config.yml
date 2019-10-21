@@ -40,6 +40,10 @@ refs:
       run:
         name: Test
         command: yarn test
+    - &Release
+      run:
+        name: Release
+        command: yarn release
 
 jobs:
   build:
@@ -78,6 +82,16 @@ jobs:
           at: .
       - *Lint
 
+  deploy:
+    <<: *container
+    steps:
+      - checkout
+      - *Prepare
+      - *RestoreDep
+      - attach_workspace:
+          at: .
+      - *Release
+
 workflows:
   version: 2
   build-test-lint:
@@ -89,3 +103,11 @@ workflows:
       - lint:
           requires:
             - build
+      - deploy:
+          context: common-env-vars
+          requires:
+            - test
+            - lint
+          filters:
+            branches:
+              only: master
