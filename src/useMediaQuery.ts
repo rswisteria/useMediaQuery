@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useMediaQuery: (mediaQueryList: string[]) => string = (mediaQueryList) => {
+const useMediaQuery: (mediaQueryList: string[]) => string | null = (mediaQueryList) => {
     const [current, setCurrent] = useState();
 
     useEffect(() => {
         let mounted: boolean = true;
-        let timeout = null;
+        let timeout: any = null;
 
-        const getCurrentMedia: (mediaList: string[]) => string = (mediaList) => {
+        const getCurrentMedia: (mediaList: string[]) => string | null = (mediaList) => {
             let result = null;
             for (const media of mediaList) {
                 if (window.matchMedia(media).matches) {
@@ -24,7 +24,7 @@ const useMediaQuery: (mediaQueryList: string[]) => string = (mediaQueryList) => 
                 return;
             }
 
-            const media: string = getCurrentMedia(mediaQueryList);
+            const media = getCurrentMedia(mediaQueryList);
             if (current !== media) {
                 setCurrent(media);
             }
