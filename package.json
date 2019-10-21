@@ -16,6 +16,7 @@
     "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
     "lint:fix": "yarn lint --fix"
   },
+  "main": "lib/index.js",
   "author": {
     "name": "TOYOTA, Yoichi",
     "url": "https://twitter.com/rs_wisteria"
