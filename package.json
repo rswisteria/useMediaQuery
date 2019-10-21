@@ -1,5 +1,5 @@
 {
-  "name": "react-use-media-query",
+  "name": "@rswisteria/react-use-media-query",
   "version": "0.1.0",
   "description": "React custom hooks for using media query",
   "peerDependencies": {
@@ -14,7 +14,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "release": "semantic-release"
   },
   "main": "lib/index.js",
   "author": {
@@ -39,6 +40,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-test-renderer": "^16.10.2",
+    "semantic-release": "^15.13.27",
     "tslint": "^5.20.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.1.0",

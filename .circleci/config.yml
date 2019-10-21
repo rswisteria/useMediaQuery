@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 refs:
   container: &container
@@ -10,10 +10,24 @@ refs:
       run:
         name: Versions
         command: node -v && yarn -v
+    - &Prepare
+      run:
+        name: Prepare for build
+        command: apk add ca-certificates
     - &Install
       run:
         name: Install Dependencies
         command: yarn install --pure-lockfile
+    - &StoreDep
+      save_cache:
+        key: v1-node-modules-{{ arch }}-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules
+    - &RestoreDep
+      restore_cache:
+        key: v1-node-modules-{{ arch }}-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules
     - &Build
       run:
         name: Build
@@ -26,40 +40,74 @@ refs:
       run:
         name: Test
         command: yarn test
+    - &Release
+      run:
+        name: Release
+        command: yarn release
 
 jobs:
-  all:
+  build:
     <<: *container
     steps:
       - checkout
       - *Versions
+      - *Prepare
+      - *RestoreDep
       - *Install
+      - *StoreDep
       - *Build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - lib
+            - esm
+
+  test:
+    <<: *container
+    steps:
+      - checkout
+      - *Prepare
+      - *RestoreDep
+      - attach_workspace:
+          at: .
       - *Test
+
+  lint:
+    <<: *container
+    steps:
+      - checkout
+      - *Prepare
+      - *RestoreDep
+      - attach_workspace:
+          at: .
       - *Lint
 
-  master:
+  deploy:
     <<: *container
     steps:
       - checkout
-      - *Versions
-      - *Install
-      - *Build
-      - *Test
-      - *Lint
+      - *Prepare
+      - *RestoreDep
+      - attach_workspace:
+          at: .
+      - *Release
 
 workflows:
   version: 2
-  all:
+  build-test-lint:
     jobs:
-      - all:
-          filters:
-            branches:
-              ignore:
-                - master
-  master:
-    jobs:
-      - master:
+      - build
+      - test:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
+      - deploy:
+          context: common-env-vars
+          requires:
+            - test
+            - lint
           filters:
             branches:
               only: master
