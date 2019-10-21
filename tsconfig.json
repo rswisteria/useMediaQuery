@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "pretty": true,
+    "rootDir": "src",
+    "sourceMap": false,
+    "strict": true,
+    "outDir": "lib",
+    "lib": ["es2018", "dom"],
+    "importHelpers": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "**/__tests__/**/*",
+    "*.test.ts",
+    "*.test.tsx"
+  ]
+}

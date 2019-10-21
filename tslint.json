@@ -7,5 +7,17 @@
   ],
   "linterOptions": {
     "exclude": ["node_modules/**"]
+  },
+  "rules": {
+    "prettier": [
+      true,
+      {
+        "trailingComma": "es5",
+        "singleQuote": false,
+        "printWidth": 120,
+        "tabWidth": 2
+      }
+    ],
+    "ordered-imports": false
   }
 }
