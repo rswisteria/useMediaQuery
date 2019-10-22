@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/rswisteria/useMediaQuery/compare/v1.0.2...v1.0.3) (2019-10-22)
+
+
+### Bug Fixes
+
+* Fix sample code in README. ([99605ee](https://github.com/rswisteria/useMediaQuery/commit/99605eef3911968e0dbb59f7b7bff568e47979b3))
+
 ## [1.0.2](https://github.com/rswisteria/useMediaQuery/compare/v1.0.1...v1.0.2) (2019-10-22)
 
 
