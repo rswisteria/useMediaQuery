@@ -16,7 +16,7 @@
 
 ```jsx
 import { useMemo } from 'react'
-import 'useMediaQuery' from './useMediaQuery'
+import 'useMediaQuery' from '@rswisteria/react-use-media-query'
 
 const QUERY_SP = "(max-width: 767px)"
 const QUERY_PC = "(min-width: 768px)"
