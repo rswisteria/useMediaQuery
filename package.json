@@ -33,6 +33,9 @@
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
     "@babel/types": "^7.6.3",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/npm": "^5.2.0",
     "@testing-library/react-hooks": "^3.1.0",
     "@types/jest": "^24.0.19",
     "jest": "^24.9.0",
@@ -44,5 +47,20 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.4"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
   }
 }
