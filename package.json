@@ -1,6 +1,6 @@
 {
   "name": "@rswisteria/react-use-media-query",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React custom hooks for using media query",
   "peerDependencies": {
     "react": "^16.8.0",
